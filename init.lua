@@ -153,11 +153,12 @@ require('lazy').setup({
   },
 
   {
-    -- Theme inspired by Atom
-    'navarasu/onedark.nvim',
+    -- Theme inspired by myself
+    'catppuccin/nvim',
+    name = "catppuccin",
     priority = 1000,
     config = function()
-      vim.cmd.colorscheme 'onedark'
+      vim.cmd.colorscheme 'catppuccin'
     end,
   },
 
@@ -168,13 +169,14 @@ require('lazy').setup({
     opts = {
       options = {
         icons_enabled = false,
-        theme = 'onedark',
+        theme = 'catppuccin',
         component_separators = '|',
         section_separators = '',
       },
     },
   },
 
+--{ "catppuccin/nvim", name = "catppuccin", priority = 1000 }
   {
     -- Add indentation guides even on blank lines
     'lukas-reineke/indent-blankline.nvim',
@@ -241,7 +243,10 @@ vim.o.hlsearch = false
 
 -- Make line numbers default
 vim.wo.number = true
+vim.wo.relativenumber = true
 
+-- Sets minimum number of screen lines above and below cursor
+vim.o.scrolloff = 8
 -- Enable mouse mode
 vim.o.mouse = 'a'
 
@@ -378,7 +383,7 @@ vim.keymap.set('n', '<leader>sr', require('telescope.builtin').resume, { desc = 
 vim.defer_fn(function()
   require('nvim-treesitter.configs').setup {
     -- Add languages to be installed here that you want installed for treesitter
-    ensure_installed = { 'c', 'cpp', 'go', 'lua', 'python', 'rust', 'tsx', 'javascript', 'typescript', 'vimdoc', 'vim', 'bash' },
+    ensure_installed = { 'c', 'cpp', 'go', 'lua', 'python', 'rust', 'tsx', 'javascript', 'typescript', 'vimdoc', 'vim', 'bash', 'dockerfile' },
 
     -- Autoinstall languages that are not installed. Defaults to false (but you can change for yourself!)
     auto_install = false,
